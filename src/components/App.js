@@ -88,7 +88,7 @@ class App extends Component {
   render() {
     return (  
       <div>
-      test
+      tests
       </div>
     
     );
