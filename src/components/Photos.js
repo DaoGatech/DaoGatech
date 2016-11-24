@@ -69,7 +69,7 @@ class Photos extends Component {
   }
 
 	componentWillMount() {
-    $.get('http://daowebapi.herokuapp.com/user/images').done(function(data) {
+    $.get('https://daowebapi.herokuapp.com/user/images').done(function(data) {
       let temp = [];
       for(var index = 0; index < data.length; index++) {
           map[hashCode(data[index].url)] = data[index].location; 
