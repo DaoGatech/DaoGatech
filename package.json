@@ -21,8 +21,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "dist": "webpack -p",
-    "postinstall": "npm run dist"
+    "eject": "react-scripts eject"
   }
 }
