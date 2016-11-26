@@ -8,7 +8,7 @@ button {
   overflow: hidden;
   outline:none;
   color: #FFF;
-  font-size: 1.000em;
+  font-size: 1.1875em;
   margin-right: 10%;
 }
 .App {
@@ -26,8 +26,8 @@ button {
 
 .App-header {
   background-color: #222;
-  height: 30px;
-  padding: 20px;
+  height: 1.875em;
+  padding: 1.25em;
   color: white;
 }
 
@@ -39,10 +39,10 @@ button {
 
 .introduction {
   width: 78%;
-  height: 300px;
+  height: 18.75em;
   background-color:#F2F3F4;
   font-style: normal;
-  border-radius: 10px;
+  border-radius: 0.625em;
   font-weight: 400;
   font-size: 1em;
   margin-left: auto;
@@ -54,7 +54,7 @@ button {
 
 .left-section {
   width: 40%;
-  height: 38px;
+  height: 2.375em;
   float: left;
   font-family: proxima-nova, sans-serif;
   font-style: normal;
@@ -154,7 +154,7 @@ button {
 }
 
 .imgHeader {
-  border-bottom: 2px solid #D0D3D4;
+  border-bottom: 0.125em solid #D0D3D4;
   position: relative;
   margin-top:0%;
   height: 10%;
