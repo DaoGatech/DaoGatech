@@ -8,12 +8,12 @@ button {
   overflow: hidden;
   outline:none;
   color: #FFF;
-  font-size: 19px;
+  font-size: 1.000em;
   margin-right: 10%;
 }
 .App {
   text-align: center;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
 }
 
 .App-logo {
@@ -44,7 +44,7 @@ button {
   font-style: normal;
   border-radius: 10px;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1em;
   margin-left: auto;
   margin-right: auto;
   margin-top:1%;
@@ -60,7 +60,7 @@ button {
   font-style: normal;
   position: relative;
   font-weight: 900;
-  font-size: 22px;
+  font-size: 1em;
 }
 
 .app-title {
@@ -116,7 +116,7 @@ button {
   height: 20%;
   width: 100%;
   text-align: left;
-  font-size: 40px;
+  font-size: 1.818em;
   top: 18%;
   position: absolute;
 }
@@ -202,7 +202,7 @@ button {
   display: inline-block;
   font-weight: 600;
   margin-top:3%;
-  font-size: 18px;
+  font-size: 0.818em;
   width: 100%;
   height: 45%;
 }
