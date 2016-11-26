@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/Photos.css';
+import '../css/App.css';
 import { ReactRpg } from 'react-rpg';
 import FontAwesome from 'react-fontawesome';
 import Logo from '../assets/logo.png';
