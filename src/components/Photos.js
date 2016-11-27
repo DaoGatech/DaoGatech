@@ -5,7 +5,7 @@ import FontAwesome from 'react-fontawesome';
 import Logo from '../assets/logo.png';
 import Modal from 'react-modal';
 import $ from 'jquery';
-import FacebookProvider, { Like, Share, Comments} from 'react-facebook';
+import FacebookProvider, { Like, ShareButton, Comments} from 'react-facebook';
 
 const customStyles = {
 overlay : {
@@ -149,10 +149,7 @@ class Photos extends Component {
           </div>
           <div className="commentSec">
             <FacebookProvider appID="367349636949464">
-               <Like href="http://daowebapi.herokuapp.com/" colorScheme="dark" showFaces/>
-            </FacebookProvider>
-            <FacebookProvider appID="367349636949464">
-              <Comments href="http://daowebapi.herokuapp.com/" />
+               <Like href="http://daogatech.herokuapp.com/" colorScheme="dark" showFaces/>
             </FacebookProvider>
           </div>
         </div>
