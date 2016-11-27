@@ -144,7 +144,7 @@ button {
 .left-side-modal {
   display: inline-block;
   height:100%;
-  width: 55%;
+  width: 700px;
   overflow:hidden;
 }
 
@@ -152,7 +152,7 @@ button {
 .right-side-modal {
   height:100%;
   display: inline-block;
-  width: 44%;
+  width: auto;
   padding-left: 0.3125em;
   overflow:hidden;
 
@@ -178,6 +178,8 @@ button {
   width: 100%;
   border: 1px solid black;
   display: inline-block;
+  padding-right: 1em;
+  overflow-x: auto;
 }
 
 .closeModal {
