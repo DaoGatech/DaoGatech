@@ -22,7 +22,7 @@ overlay : {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    width                 : '80%',
+    width                 : '75%',
     height                : '70%',
     padding               : '0',
     transform             : 'translate(-50%, -50%)'
