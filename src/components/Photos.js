@@ -148,12 +148,12 @@ class Photos extends Component {
         
           </div>
           <div className="commentSec">
-          <FacebookProvider appID="367349636949464">
-             <Like href="http://daowebapi.herokuapp.com/" colorScheme="dark" showFaces/>
-          </FacebookProvider>
-          <FacebookProvider appID="367349636949464">
-            <Comments href="http://daowebapi.herokuapp.com/" />
-          </FacebookProvider>
+            <FacebookProvider appID="367349636949464">
+               <Like href="http://daowebapi.herokuapp.com/" colorScheme="dark" showFaces/>
+            </FacebookProvider>
+            <FacebookProvider appID="367349636949464">
+              <Comments href="http://daowebapi.herokuapp.com/" />
+            </FacebookProvider>
           </div>
         </div>
         </Modal>
