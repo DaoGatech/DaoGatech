@@ -29,6 +29,18 @@ overlay : {
   }
 };
 
+let getParameterByName = function(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 let hashCode = function(str){
     let hash = 0;
     if (str.length == 0) return hash;
@@ -54,6 +66,11 @@ class Photos extends Component {
                   currentUrl: "",
                   currentLocation : ""
     };
+    if(getParameterByName("id")) {
+      //this.setState({currentUrl: url, currentLocation: map[hashCode(url)]});
+      //this.openModal(); 
+    }
+    console.log(getParameterByName("id"));
 	}
   openModal() {
     this.setState({modalIsOpen: true});
@@ -148,7 +165,7 @@ class Photos extends Component {
         
           </div>
           <div className="commentSec">
-            <FacebookProvider appID="367349636949464">
+            <FacebookProvider appID="1252482244774906">
                <Like href="http://daogatech.herokuapp.com/" colorScheme="dark" showFaces/>
             </FacebookProvider>
           </div>

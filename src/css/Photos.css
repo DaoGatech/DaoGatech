@@ -121,6 +121,7 @@ button {
   text-align: left;
   font-size: 1.818em;
   top: 18%;
+  font-weight:500;
   position: absolute;
 }
 
@@ -129,6 +130,7 @@ button {
   width: 100%;
   text-align: left;
   font-size: auto;
+  font-weight:450;
   top: 38%;
   position: absolute;
 }
@@ -207,7 +209,7 @@ button {
   display: inline-block;
   font-weight: 600;
   margin-top:3%;
-  font-size: 0.818em;
+  font-size: 1.3em;
   width: 100%;
   height: 45%;
 }
@@ -216,4 +218,5 @@ button {
   display: inline-block;
   width:100%;
   height: 45%;
+  font-size: 1.2em;
 }
