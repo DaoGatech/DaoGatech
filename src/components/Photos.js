@@ -52,7 +52,8 @@ let hashCode = function(str){
     return hash.toString();
 }
 
-let map = {};
+let map_location = {};
+let map_id = {};
 
 class Photos extends Component {
   
@@ -67,10 +68,12 @@ class Photos extends Component {
                   currentLocation : ""
     };
     if(getParameterByName("id")) {
-      //this.setState({currentUrl: url, currentLocation: map[hashCode(url)]});
-      //this.openModal(); 
+      $.get('https://daowebapi.herokuapp.com/user/images/' + getParameterByName("id")).done(function(data) {
+        this.setState({currentUrl: data.url, currentLocation: map_location[hashCode(data.url)]});
+        this.openModal(); 
+      }.bind(this));
     }
-    console.log(getParameterByName("id"));
+    
 	}
   openModal() {
     this.setState({modalIsOpen: true});
@@ -89,12 +92,14 @@ class Photos extends Component {
     $.get('https://daowebapi.herokuapp.com/user/images').done(function(data) {
       let temp = [];
       for(var index = 0; index < data.length; index++) {
-          map[hashCode(data[index].url)] = data[index].location; 
+          map_location[hashCode(data[index].url)] = data[index].location; 
+          map_id[hashCode(data[index].url)] = data[index].id;
           temp.push(
             { url : data[index].url ,
               clickHandler: (url, obj) => { 
-                this.setState({currentUrl: url, currentLocation: map[hashCode(url)]});
+                this.setState({currentUrl: url, currentLocation: map_location[hashCode(url)]});
                 this.openModal(); 
+                window.history.pushState("Photo Page", "DaoGatech", "/photos?id=" + map_id[hashCode(url)]);
               }
           });
         }
