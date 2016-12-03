@@ -108,6 +108,7 @@ class Photos extends Component {
   }
 
   render() {
+    console.log(window.location.href);
     return (  
       <div className="App">
         <div className="App-header">
@@ -171,7 +172,7 @@ class Photos extends Component {
           </div>
           <div className="commentSec">
             <FacebookProvider appID="1252482244774906">
-               <Like href="http://daogatech.herokuapp.com/" colorScheme="dark" showFaces/>
+               <Like href={window.location.href} colorScheme="dark" showFaces/>
             </FacebookProvider>
           </div>
         </div>
