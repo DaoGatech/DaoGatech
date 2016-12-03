@@ -86,6 +86,7 @@ class Photos extends Component {
   closeModal(event) {
     event.preventDefault();
     this.setState({modalIsOpen: false});
+    window.history.pushState("Photo Page", "DaoGatech", "/photos");
   }
 
 	componentWillMount() {

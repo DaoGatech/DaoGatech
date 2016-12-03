@@ -19,7 +19,6 @@ class Login extends Component {
             
           </div>
         </div>
-        <Button bsStyle="primary">Sign In</Button>
       </div>
 
     );

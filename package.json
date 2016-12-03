@@ -17,6 +17,7 @@
     "react-router": "^3.0.0",
     "react-rpg": "^2.0.0",
     "react-social-button": "^1.0.2",
+    "validator": "^6.2.0",
     "webpack": "^1.13.3"
   },
   "scripts": {
