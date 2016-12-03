@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Button} from 'react-bootstrap';
 import Logo from '../assets/logo.png';
-import Validation from 'react-validation';
 import '../css/Login.css';
 
 class Login extends Component {
