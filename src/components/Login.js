@@ -1,27 +1,44 @@
 import React, { Component } from 'react';
-import {Button} from 'react-bootstrap';
-import Logo from '../assets/logo.png';
 import '../css/Login.css';
 import $ from 'jquery';
+import AlertContainer from 'react-alert';
 
 class Login extends Component {
 
+  constructor(props){
+    super(props);
+    this.alertOptions = {
+      offset: 14,
+      position: 'bottom left',
+      theme: 'dark',
+      time: 5000,
+      transition: 'scale'
+    };
+  }
+
+ 
   authenticate() {
     let username_val = document.getElementById("username").value;
     let password_val = document.getElementById("password").value;
-     $.post("", {
+     $.post("https://daowebapi.herokuapp.com/authenticate", {
         username: username_val,
         password: password_val
     },
     function(data, status){
-      console.log("data " + data);
-      console.log("status " + status);
+      if(data.message === "PASS") {
+          window.location.href = "/admin";
+      } else {
+        
+      }
     });
   }
+
+
   render() {
     return (  
+      
       <div className="App">
-       
+       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <div className="row">
 		      <div className="col-md-4 col-md-offset-4">
     		    <div className="panel panel-default">
