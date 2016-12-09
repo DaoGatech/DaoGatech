@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Login.css';
 import $ from 'jquery';
-import AlertContainer from 'react-alert';
 
 class Login extends Component {
 
