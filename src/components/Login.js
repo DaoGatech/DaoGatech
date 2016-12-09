@@ -6,13 +6,7 @@ class Login extends Component {
 
   constructor(props){
     super(props);
-    this.alertOptions = {
-      offset: 14,
-      position: 'bottom left',
-      theme: 'dark',
-      time: 5000,
-      transition: 'scale'
-    };
+    
   }
 
  
@@ -37,7 +31,6 @@ class Login extends Component {
     return (  
       
       <div className="App">
-       <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <div className="row">
 		      <div className="col-md-4 col-md-offset-4">
     		    <div className="panel panel-default">
