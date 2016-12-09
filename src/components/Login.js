@@ -2,8 +2,22 @@ import React, { Component } from 'react';
 import {Button} from 'react-bootstrap';
 import Logo from '../assets/logo.png';
 import '../css/Login.css';
+import $ from 'jquery';
 
 class Login extends Component {
+
+  authenticate() {
+    let username_val = document.getElementById("username").value;
+    let password_val = document.getElementById("password").value;
+     $.post("", {
+        username: username_val,
+        password: password_val
+    },
+    function(data, status){
+      console.log("data " + data);
+      console.log("status " + status);
+    });
+  }
   render() {
     return (  
       <div className="App">
@@ -15,15 +29,13 @@ class Login extends Component {
 			    	    <h3 className="panel-title">Please sign in</h3>
 			 	      </div>
 			  	    <div className="panel-body">
-			    	    <form>
                 <div className="form-group">
-			    		      <input className="form-control" placeholder="Username" name="username" type="text"/>
+			    		      <input id="username" className="form-control" placeholder="Username" name="username" type="text"/>
 			    		    </div>
 			    		    <div className="form-group">
-			    			    <input className="form-control" placeholder="Password" name="password" type="password"/>
+			    			    <input id="password" className="form-control" placeholder="Password" name="password" type="password"/>
 			    		    </div>
-			    		    <input className="btn btn-lg btn-success btn-block" type="submit" value="Login"/>
-			      	</form>
+			    		    <button onClick={this.authenticate} type="button" className="btn btn-lg btn-success btn-block">Login</button>
 			    </div>
 			</div>
 		</div>
