@@ -173,7 +173,7 @@ class Photos extends Component {
           </div>
           <div className="commentSec">
             <FacebookProvider appID="1252482244774906">
-               <Like href={window.location.href} colorScheme="dark" showFaces/>
+              <ShareButton href={window.location.href} />
             </FacebookProvider>
           </div>
         </div>
