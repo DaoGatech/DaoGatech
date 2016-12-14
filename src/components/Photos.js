@@ -172,7 +172,7 @@ class Photos extends Component {
         
           </div>
           <div className="commentSec">
-            <FacebookProvider appID="1252482244774906">
+            <FacebookProvider appID="147912702359141">
               <ShareButton href={window.location.href} />
             </FacebookProvider>
           </div>
