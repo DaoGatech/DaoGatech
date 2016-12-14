@@ -6,6 +6,7 @@ import Logo from '../assets/logo.png';
 import Modal from 'react-modal';
 import $ from 'jquery';
 import FacebookProvider, { Like, ShareButton, Comments} from 'react-facebook';
+import DocumentMeta from 'react-document-meta';
 
 const customStyles = {
 overlay : {
@@ -109,7 +110,18 @@ class Photos extends Component {
   }
 
   render() {
-    console.log(window.location.href);
+    const meta = {
+      title: 'Some Meta Title',
+      description: 'I am a description, and I can create multiple tags',
+      canonical: 'http://example.com/path/to/page',
+      meta: {
+        charset: 'utf-8',
+        name: {
+          keywords: 'react,meta,document,html,tags'
+        }
+      }
+    };
+
     return (  
       <div className="App">
         <div className="App-header">
@@ -125,6 +137,7 @@ class Photos extends Component {
             
           </div>
         </div>
+       
         <div className="introduction">
           <div className="left-intro">
              <img className="avatar" src={Logo} alt="avatar"/>
@@ -172,6 +185,7 @@ class Photos extends Component {
         
           </div>
           <div className="commentSec">
+            <DocumentMeta {...meta} />
             <FacebookProvider appID="147912702359141">
               <ShareButton href={window.location.href} />
             </FacebookProvider>
