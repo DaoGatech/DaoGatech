@@ -6,7 +6,6 @@ import Logo from '../assets/logo.png';
 import Modal from 'react-modal';
 import $ from 'jquery';
 import FacebookProvider, { Like, ShareButton, Comments} from 'react-facebook';
-import DocumentMeta from 'react-document-meta';
 
 const customStyles = {
 overlay : {
@@ -72,6 +71,8 @@ class Photos extends Component {
       $.get('https://daowebapi.herokuapp.com/user/images/' + getParameterByName("id")).done(function(data) {
         this.setState({currentUrl: data.url, currentLocation: map_location[hashCode(data.url)]});
         this.openModal(); 
+        $('meta[name=og\\:image]').attr('content', data.url);
+        $('meta[name=og\\:title]').attr('content', map_location[hashCode(data.url)]);
       }.bind(this));
     }
     
@@ -101,7 +102,8 @@ class Photos extends Component {
               clickHandler: (url, obj) => { 
                 this.setState({currentUrl: url, currentLocation: map_location[hashCode(url)]});
                 this.openModal(); 
-                window.history.pushState("Photo Page", "DaoGatech", "/photos?id=" + map_id[hashCode(url)]);
+                window.history.pushState("Photo Page", map_location[hashCode(url)] , "/photos?id=" + map_id[hashCode(url)]);
+                $('meta[name=og\\:image]').attr('content', url);
               }
           });
         }
@@ -185,7 +187,6 @@ class Photos extends Component {
         
           </div>
           <div className="commentSec">
-            <DocumentMeta {...meta} />
             <FacebookProvider appID="147912702359141">
               <ShareButton href={window.location.href} />
             </FacebookProvider>
