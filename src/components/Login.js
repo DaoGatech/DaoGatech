@@ -11,6 +11,7 @@ class Login extends Component {
 
  
   authenticate() {
+    console.log("log");
     let username_val = document.getElementById("username").value;
     let password_val = document.getElementById("password").value;
      $.post("https://daowebapi.herokuapp.com/authenticate", {
@@ -21,7 +22,7 @@ class Login extends Component {
       if(data.message === "PASS") {
           window.location.href = "/admin";
       } else {
-        
+        console.log("nah");
       }
     });
   }
