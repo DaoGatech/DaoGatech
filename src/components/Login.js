@@ -19,6 +19,7 @@ class Login extends Component {
         password: password_val
     },
     function(data, status){
+      console.log(data.message);
       if(data.message === "PASS") {
           window.location.href = "/admin";
       } else {
