@@ -19,11 +19,10 @@ class Login extends Component {
         password: password_val
     },
     function(data, status){
-      console.log(data.message);
       if(data.message === "PASS") {
           window.location.href = "/admin";
       } else {
-        console.log("nah");
+        $(".denied").css("display","block");
       }
     });
   }
@@ -47,6 +46,7 @@ class Login extends Component {
 			    			    <input id="password" className="form-control" placeholder="Password" name="password" type="password"/>
 			    		    </div>
 			    		    <button onClick={this.authenticate} type="button" className="btn btn-lg btn-success btn-block">Login</button>
+                  <p className="denied">Wrong login credentials - Access Denied</p>
 			    </div>
 			</div>
 		</div>
