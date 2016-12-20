@@ -11,7 +11,6 @@ class Login extends Component {
 
  
   authenticate() {
-    console.log("log");
     let username_val = document.getElementById("username").value;
     let password_val = document.getElementById("password").value;
      $.post("https://daowebapi.herokuapp.com/authenticate", {
