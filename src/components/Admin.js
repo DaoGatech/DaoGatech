@@ -27,6 +27,7 @@ class Admin extends Component {
       })
     }
     reader.readAsDataURL(file)
+    $('#uploadBtn').css('visibility','visible');
   }
 
 
@@ -60,6 +61,7 @@ class Admin extends Component {
                   {imagePreview}
                 </imgPreview>
               </div>
+              <button id="uploadBtn" className="btn btn-primary">Upload</button>
             </Tab>
         </LeftTabs>
       </div>

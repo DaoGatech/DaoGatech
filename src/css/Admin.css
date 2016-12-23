@@ -5,3 +5,8 @@
 .previewWrapper {
     margin-top:5%;
 }
+
+#uploadBtn {
+    visibility: hidden;
+    margin-top:5%;
+}
