@@ -30,6 +30,16 @@ class Admin extends Component {
     $('#uploadBtn').css('visibility','visible');
   }
 
+  upload() {
+    if(this.file !== undefined) {
+      $.post('https://daowebapi.herokuapp.com/upload', { location: $('#location').val(), file: this.file }).done(function(data) {
+        imagePreview = (<image>Image uploaded failed. Please try again</image>);
+        if(data.message === 'PASS') {
+            imagePreview = (<image>Image uploaded successfully</image>);
+        }
+      }.bind(this));
+    }
+  }
 
   render() {
     let {imagePreviewUrl} = this.state;
@@ -61,7 +71,7 @@ class Admin extends Component {
                   {imagePreview}
                 </imgPreview>
               </div>
-              <button id="uploadBtn" className="btn btn-primary">Upload</button>
+              <button onClick="upload()" id="uploadBtn" className="btn btn-primary">Upload</button>
             </Tab>
         </LeftTabs>
       </div>
