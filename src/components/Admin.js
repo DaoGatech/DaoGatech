@@ -31,13 +31,25 @@ class Admin extends Component {
   }
 
   upload() {
-    if(this.file !== undefined) {
-      $.post('https://daowebapi.herokuapp.com/upload', { location: $('#location').val(), file: this.file }).done(function(data) {
-        imagePreview = (<image>Image uploaded failed. Please try again</image>);
-        if(data.message === 'PASS') {
-            imagePreview = (<image>Image uploaded successfully</image>);
+    if(this.state.file !== undefined) {
+      var fd = new FormData();
+      fd.append("file", this.state.file);
+      fd.append("location",$('#location').val());
+      fd.append("description",$('#description').val());
+      $.ajax({
+        url: 'https://daowebapi.herokuapp.com/upload',
+        data: fd,
+        contentType: false,
+        processData: false,
+        type: 'POST',
+        success: function(data){
+          if(data.message === 'PASS') {
+            alert("Image uploaded successfully");
+          } else {
+            alert("Fail to upload. Try again");
+          }
         }
-      }.bind(this));
+      });
     }
   }
 
@@ -61,6 +73,7 @@ class Admin extends Component {
        <LeftTabs defaultActiveKey={1} tabWidth={7} paneWidth={9}>
             <Tab eventKey={1} title="Upload Pictures">
               <input type="text" className="form-control" id="location" placeholder="Location"/>
+              <input type="text" className="form-control" id="description" placeholder="Description"/>
               <div className="uploadWrapper">
                 Choose file: <label className="btn btn-default btn-file">
                   Browse <input ref="file" onChange={(e)=>this.imageChange(e)} id="imgURL" type="file" style={{display: 'none'}}/>
@@ -71,7 +84,7 @@ class Admin extends Component {
                   {imagePreview}
                 </imgPreview>
               </div>
-              <button onClick="upload()" id="uploadBtn" className="btn btn-primary">Upload</button>
+              <button onClick={(e)=>this.upload()} id="uploadBtn" className="btn btn-primary">Upload</button>
             </Tab>
         </LeftTabs>
       </div>
