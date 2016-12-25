@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes as T} from 'react';
 import '../css/Admin.css';
 import $ from 'jquery';
+import AuthService from '../utils/AuthService'
+import {Button} from 'react-bootstrap'
 
 var Tabs = require('pui-react-tabs').Tabs;
 var LeftTabs = require('pui-react-tabs').LeftTabs;
@@ -15,7 +17,21 @@ class Admin extends Component {
     };
     
   }
- 
+  static contextTypes = {
+    router: T.object
+  }
+
+  static propTypes = {
+    auth: T.instanceOf(AuthService)
+  }
+
+  logout() {
+    // destroys the session data
+    this.props.auth.logout()
+    // redirects to login page
+    this.context.router.push('/login');
+  }
+
   imageChange(e) {
     e.preventDefault()
     let reader = new FileReader()
@@ -68,6 +84,7 @@ class Admin extends Component {
       <div className="App-header">
           <div className="nav">
             ADMIN
+            <Button onClick={this.logout.bind(this)}>Logout</Button>
           </div>
         </div>
        <LeftTabs defaultActiveKey={1} tabWidth={7} paneWidth={9}>

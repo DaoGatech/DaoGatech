@@ -1,57 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes as T } from 'react';
 import '../css/Login.css';
 import $ from 'jquery';
+import AuthService from '../utils/AuthService'
 
 class Login extends Component {
-
-  constructor(props){
-    super(props);
-    
+  
+  static propTypes = {
+    location: T.object,
+    auth: T.instanceOf(AuthService)
   }
-
- 
-  authenticate() {
-    let username_val = document.getElementById("username").value;
-    let password_val = document.getElementById("password").value;
-     $.post("https://daowebapi.herokuapp.com/authenticate", {
-        username: username_val,
-        password: password_val
-    },
-    function(data, status){
-      if(data.message === "PASS") {
-          window.location.href = "/admin";
-      } else {
-        $(".denied").css("display","block");
-      }
-    });
-  }
-
-
+  
   render() {
+    const { auth } = this.props;
     return (  
-      
       <div className="App">
-        <div className="row">
-		      <div className="col-md-4 col-md-offset-4">
-    		    <div className="panel panel-default">
-			  	    <div className="panel-heading">
-			    	    <h3 className="panel-title">Please sign in</h3>
-			 	      </div>
-			  	    <div className="panel-body">
-                <div className="form-group">
-			    		      <input id="username" className="form-control" placeholder="Username" name="username" type="text"/>
-			    		    </div>
-			    		    <div className="form-group">
-			    			    <input id="password" className="form-control" placeholder="Password" name="password" type="password"/>
-			    		    </div>
-			    		    <button onClick={this.authenticate} type="button" className="btn btn-lg btn-success btn-block">Login</button>
-                  <p className="denied">Wrong login credentials - Access Denied</p>
-			    </div>
+        <button onClick={auth.login.bind(this)} type="button" className="btn btn-lg btn-success btn-block login-btn">Login to Admin</button>      
 			</div>
-		</div>
-	</div>
-      </div>
-
+	
     );
   }
  

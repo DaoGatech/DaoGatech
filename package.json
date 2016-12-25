@@ -6,9 +6,11 @@
     "react-scripts": "0.7.0"
   },
   "dependencies": {
+    "auth0-js": "^7.6.0",
     "auth0-lock": "^10.7.3",
     "express": "^4.14.0",
     "jquery": "^3.1.1",
+    "jwt-decode": "^2.1.0",
     "pui-react-tabs": "^7.3.1",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.7",

@@ -1,9 +1,8 @@
-.row {
-    margin-top: 10%;
-}
-
-.denied {
-    display: none;
-    color: red;
-    margin-top:5%;
+.login-btn {
+    width: 25%;
+    position: absolute;
+    top: 30%;
+    left: 38%;
+    height: 50px;
+    margin-top: -50px;
 }
