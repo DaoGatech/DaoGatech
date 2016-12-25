@@ -8,8 +8,7 @@ import AuthService from './utils/AuthService'
 import './css/index.css';
 import {Router, Route, browserHistory, Link} from 'react-router';
 
-console.log(process.env);
-const auth = new AuthService(process.env.AUTH_KEY, process.env.AUTH_CLIENT);
+const auth = new AuthService('MD0gkfSGRtjwOyshSOQHxFWDlSe3sLzC', 'tmizzle2005.auth0.com');
 
 // validate authentication for private routes
 const requireAuth = (nextState, replace) => {
