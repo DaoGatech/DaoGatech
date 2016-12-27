@@ -84,6 +84,11 @@ button {
   margin-left: 20%;
 }
 
+.main-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .nav {
   width: 80%;
   margin-left: auto;
@@ -147,15 +152,16 @@ button {
   display: inline-block;
   height:100%;
   width: 55%;
-  overflow: hidden;
+  position:relative;
 }
 
 .right-side-modal {
   height:100%;
   display: inline-block;
-  width: 44%;
+  width: 45%;
+  position: absolute;
+  top: 0;
   padding-left: 0.3125em;
-  overflow:hidden;
   background-color: #FCFCFC;
 }
 
@@ -163,9 +169,9 @@ button {
   border-bottom: 2px solid #D0D3D4;
   position: relative;
   margin-top:0%;
-  height: 10%;
+  height: 12%;
   width: 100%;
-  display:inline-block
+  display:inline-block;
 }
 
 .imgDesc {

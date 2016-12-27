@@ -23,7 +23,8 @@ overlay : {
     bottom                : 'auto',
     marginRight           : '-50%',
     width                 : '75%',
-    height                : '70%',
+    height                : 'auto',
+    overflow              : 'auto',
     padding               : '0',
     transform             : 'translate(-50%, -50%)'
   }
@@ -162,7 +163,7 @@ class Photos extends Component {
           contentLabel="Example Modal"
         >
         <div className="left-side-modal">
-          {this.state.currentUrl && <img width="100%" height="100%" alt="pic" src={this.state.currentUrl} /> }
+          {this.state.currentUrl && <img className="main-img" alt="pic" src={this.state.currentUrl} /> }
         </div>
         <div className="right-side-modal">
           <div onClick={this.closeModal.bind(this)} className="closeModal">
