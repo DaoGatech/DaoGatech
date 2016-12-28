@@ -231,3 +231,14 @@ button {
   padding-left: 3%;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 4%;
+  background: #FFF;
+  color: #191970;
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
+  font-size: 18px;
+}
