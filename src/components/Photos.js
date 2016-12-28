@@ -5,7 +5,6 @@ import FontAwesome from 'react-fontawesome';
 import Logo from '../assets/logo.png';
 import Modal from 'react-modal';
 import $ from 'jquery';
-import FacebookProvider, { Like, ShareButton, Comments} from 'react-facebook';
 
 const customStyles = {
 overlay : {
@@ -55,6 +54,7 @@ let hashCode = function(str){
 
 let map_location = {};
 let map_id = {};
+let map_desc = {};
 
 class Photos extends Component {
   
@@ -66,7 +66,8 @@ class Photos extends Component {
                   images: [],
                   modalIsOpen: false,
                   currentUrl: "",
-                  currentLocation : ""
+                  currentLocation : "",
+                  description : ""
     };
     if(getParameterByName("id")) {
       $.get('https://daowebapi.herokuapp.com/user/images/' + getParameterByName("id")).done(function(data) {
@@ -98,10 +99,11 @@ class Photos extends Component {
       for(var index = 0; index < data.length; index++) {
           map_location[hashCode(data[index].url)] = data[index].location; 
           map_id[hashCode(data[index].url)] = data[index].id;
+          map_desc[hashCode(data[index].url)] = data[index].desc;
           temp.push(
             { url : data[index].url ,
               clickHandler: (url, obj) => { 
-                this.setState({currentUrl: url, currentLocation: map_location[hashCode(url)]});
+                this.setState({currentUrl: url, currentLocation: map_location[hashCode(url)], description: map_desc[hashCode(url)]});
                 this.openModal(); 
                 window.history.pushState("Photo Page", map_location[hashCode(url)] , "/photos?id=" + map_id[hashCode(url)]);
                 $('meta[name=og\\:image]').attr('content', url);
@@ -179,13 +181,21 @@ class Photos extends Component {
              </div>
           </div>
           <div className="imgDesc">
-        
+          <FontAwesome
+            name='quote-left'
+            size='lg'
+            className='icons'
+          />
+          &nbsp;
+         {this.state.description} 
+          &nbsp;
+          <FontAwesome
+            name='quote-right'
+            size='lg'
+            className='icons'
+          />
           </div>
-          <div className="commentSec">
-            <FacebookProvider appID="147912702359141">
-              <ShareButton href={window.location.href} />
-            </FacebookProvider>
-          </div>
+          
         </div>
         </Modal>
       </div>
