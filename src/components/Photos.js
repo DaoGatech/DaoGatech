@@ -158,21 +158,15 @@ class Photos extends Component {
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
+          onRequestClose={this.closeModal.bind(this)}
+          shouldCloseOnOverlayClick={true}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="Photo"
         >
         <div className="left-side-modal">
           {this.state.currentUrl && <img className="main-img" alt="pic" src={this.state.currentUrl} /> }
         </div>
         <div className="right-side-modal">
-          <div onClick={this.closeModal.bind(this)} className="closeModal">
-          <FontAwesome
-                name='close'
-                size='2x'
-                className='icons'
-          />
-          </div>
           <div className="imgHeader">
              <img src={Logo} alt="avatar"/>
              <div className="rightDesc">
