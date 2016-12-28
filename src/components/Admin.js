@@ -42,8 +42,12 @@ class Admin extends Component {
         imagePreviewUrl: reader.result
       })
     }
-    reader.readAsDataURL(file)
-    $('#uploadBtn').css('visibility','visible');
+    if(file.size <= 1048576) {
+      reader.readAsDataURL(file)
+      $('#uploadBtn').css('visibility','visible');
+    } else {
+      alert("File size exceeds maximum size. Please consider decreasing the size");
+    }
   }
 
   upload() {
@@ -73,7 +77,7 @@ class Admin extends Component {
     let {imagePreviewUrl} = this.state;
     let imagePreview = null;
     if (imagePreviewUrl) {
-      imagePreview = (<img src={imagePreviewUrl} />)
+      imagePreview = (<img width="100%" src={imagePreviewUrl} />)
     } else {
       imagePreview = (<image>Please choose the image. </image>)
     }
