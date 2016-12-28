@@ -7,7 +7,7 @@ export default class AuthService {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'https://daogatech.herokuapp.com/admin',
+        redirectUrl: window.location.origin + '/admin',
         responseType: 'token'
       }
     })
