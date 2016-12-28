@@ -71,7 +71,7 @@ class Photos extends Component {
     };
     if(getParameterByName("id")) {
       $.get('https://daowebapi.herokuapp.com/user/images/' + getParameterByName("id")).done(function(data) {
-        this.setState({currentUrl: data.url, currentLocation: map_location[hashCode(data.url)]});
+        this.setState({currentUrl: data.url, currentLocation: data.location, description: data.description});
         this.openModal(); 
         $('meta[name=og\\:image]').attr('content', data.url);
         $('meta[name=og\\:title]').attr('content', map_location[hashCode(data.url)]);
@@ -99,7 +99,7 @@ class Photos extends Component {
       for(var index = 0; index < data.length; index++) {
           map_location[hashCode(data[index].url)] = data[index].location; 
           map_id[hashCode(data[index].url)] = data[index].id;
-          map_desc[hashCode(data[index].url)] = data[index].desc;
+          map_desc[hashCode(data[index].url)] = data[index].description;
           temp.push(
             { url : data[index].url ,
               clickHandler: (url, obj) => { 
@@ -176,6 +176,12 @@ class Photos extends Component {
                 {this.state.username}
                 </div>
                 <div className="bottomRightDesc">
+                 <FontAwesome
+                    name='home'
+                    size='lg'
+                    className='icons'
+                  />
+                  &nbsp;
                 {this.state.currentLocation}
                 </div>
              </div>
