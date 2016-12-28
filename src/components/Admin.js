@@ -28,7 +28,7 @@ class Admin extends Component {
   logout() {
     // destroys the session data
     this.props.auth.logout()
-    // redirects to login page
+    // redirects to photos page
     this.context.router.push('/login');
   }
 
@@ -84,7 +84,7 @@ class Admin extends Component {
       <div className="App-header">
           <div className="nav">
             ADMIN
-            <Button onClick={this.logout.bind(this)}>Logout</Button>
+            <button onClick={this.logout.bind(this)}><a style={{"textDecoration": "none", "color": "inherit"}} href="">Logout</a></button>
           </div>
         </div>
        <LeftTabs defaultActiveKey={1} tabWidth={7} paneWidth={9}>

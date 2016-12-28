@@ -136,8 +136,9 @@ class Photos extends Component {
               <div className="app-title">DAOGATECH</div>
             </div>
             <div className="right-section">         
-              <button><a style={{"textDecoration": "none", "color": "inherit"}} href="/photos">Photos</a></button>
               <button><a style={{"textDecoration": "none", "color": "inherit"}} href="/">Home</a></button>
+              <button><a style={{"textDecoration": "none", "color": "inherit"}} href="/photos">Photos</a></button>
+              <button><a style={{"textDecoration": "none", "color": "inherit"}} href="/login">Login</a></button>
             </div>
             
           </div>
