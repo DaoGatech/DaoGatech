@@ -75,9 +75,11 @@ button {
 }
 
 .right-section {
-  float: right;
   height:100%;
-  width: 15%;
+  width: 25%;
+  position: absolute;
+  top: 0;
+  right: 12%;
 }
 .main-img {
   max-width: 100%;
@@ -241,4 +243,17 @@ button {
   width: 100%;
   font-weight: 600;
   font-size: 18px;
+}
+
+.nav-buttons {
+  padding-right: 7%;
+  font-size: 17px;
+  padding-top: 3%;
+}
+
+.inside-nav {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  text-align: center;
 }
