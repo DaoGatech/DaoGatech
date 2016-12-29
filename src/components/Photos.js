@@ -77,8 +77,7 @@ class Photos extends Component {
         this.setState({currentUrl: data.url, currentLocation: data.location, description: data.description});
         this.openModal();
         document.title = data.description;
-        $('meta[name=og\\:image]').attr('content', data.url);
-        $('meta[name=og\\:title]').attr('content', map_location[hashCode(data.url)]);
+        $('meta[property="og:image"]').attr("content",data.url);
       }.bind(this));
     }
     
@@ -96,6 +95,7 @@ class Photos extends Component {
     this.setState({modalIsOpen: false});
     window.history.pushState("Photo Page", "DaoGatech", "/photos");
     document.title = "DaoGatech";
+    $('meta[property="og:image"]').remove();
   }
 
 	componentWillMount() {
@@ -112,7 +112,6 @@ class Photos extends Component {
                 this.openModal(); 
                 window.history.pushState("Photo Page", map_location[hashCode(url)] , "/photos?id=" + map_id[hashCode(url)]);
                 document.title = map_desc[hashCode(url)];
-                $('meta[name=og\\:image]').attr('content', url);
               }
           });
         }
@@ -121,18 +120,6 @@ class Photos extends Component {
   }
 
   render() {
-    const meta = {
-      title: 'Some Meta Title',
-      description: 'I am a description, and I can create multiple tags',
-      canonical: 'http://example.com/path/to/page',
-      meta: {
-        charset: 'utf-8',
-        name: {
-          keywords: 'react,meta,document,html,tags'
-        }
-      }
-    };
-
     return (  
       <div className="App">
         <div className="App-header">
