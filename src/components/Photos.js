@@ -122,6 +122,11 @@ class Photos extends Component {
   }
 
   render() {
+  var metas = document.getElementsByTagName('meta'); 
+
+   for (var i=0; i<metas.length; i++) { 
+      console.log(metas[i]);
+   } 
     return (  
       <div className="App">
         <div className="App-header">
