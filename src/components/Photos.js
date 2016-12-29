@@ -21,7 +21,7 @@ overlay : {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    width                 : '75%',
+    width                 : '85%',
     height                : 'auto',
     overflow              : 'auto',
     padding               : '0',
