@@ -148,7 +148,8 @@ button {
 .left-side-modal {
   display: inline-block;
   height:100%;
-  width: 65%;
+  width: auto;
+  max-width: 65%;
   position:relative;
 }
 

@@ -21,8 +21,11 @@ overlay : {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    width                 : '85%',
+    width                 : 'auto',
+    maxWidth              : '85%',
+    minWidth              : '75%',
     height                : 'auto',
+    maxHeight             : '85%',
     overflow              : 'auto',
     padding               : '0',
     transform             : 'translate(-50%, -50%)'
