@@ -77,7 +77,9 @@ class Photos extends Component {
         this.setState({currentUrl: data.url, currentLocation: data.location, description: data.description});
         this.openModal();
         document.title = data.description;
-        $('meta[property="og:image"]').attr("content",data.url);
+        //console.log(data.url);
+        $('meta[property=og\\:image]').attr('content',data.url);
+        $('meta[property=og\\:image:secure_url]').attr('content',data.url);
       }.bind(this));
     }
     
