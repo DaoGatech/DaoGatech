@@ -75,7 +75,8 @@ class Photos extends Component {
     if(getParameterByName("id")) {
       $.get('https://daowebapi.herokuapp.com/user/images/' + getParameterByName("id")).done(function(data) {
         this.setState({currentUrl: data.url, currentLocation: data.location, description: data.description});
-        this.openModal(); 
+        this.openModal();
+        document.title = data.description;
         $('meta[name=og\\:image]').attr('content', data.url);
         $('meta[name=og\\:title]').attr('content', map_location[hashCode(data.url)]);
       }.bind(this));
@@ -94,6 +95,7 @@ class Photos extends Component {
     event.preventDefault();
     this.setState({modalIsOpen: false});
     window.history.pushState("Photo Page", "DaoGatech", "/photos");
+    document.title = "DaoGatech";
   }
 
 	componentWillMount() {
@@ -109,6 +111,7 @@ class Photos extends Component {
                 this.setState({currentUrl: url, currentLocation: map_location[hashCode(url)], description: map_desc[hashCode(url)]});
                 this.openModal(); 
                 window.history.pushState("Photo Page", map_location[hashCode(url)] , "/photos?id=" + map_id[hashCode(url)]);
+                document.title = map_desc[hashCode(url)];
                 $('meta[name=og\\:image]').attr('content', url);
               }
           });
