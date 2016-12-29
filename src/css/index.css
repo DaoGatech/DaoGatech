@@ -3,4 +3,18 @@ body {
   padding: 0;
   font-family: sans-serif;
   zoom: 100%;
+  overflow: scroll;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: 4%;
+  margin-top: 5%;
+  background: #FFF;
+  color: #191970;
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
 }

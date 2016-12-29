@@ -158,9 +158,6 @@ class Photos extends Component {
         <div className="gallery">
           <ReactRpg imagesArray={this.state.images} columns={[ 1, 2, 3 ]} padding={20} />
         </div>
-        <div className="footer">
-          Built by <a href="https://facebook.github.io/react/">ReactJS</a> by <a href="https://developers.facebook.com/">Facebook</a> - View source on <a href="https://github.com/DaoGatech/DaoGatech">Github</a>
-        </div>
         
         <Modal
           isOpen={this.state.modalIsOpen}
