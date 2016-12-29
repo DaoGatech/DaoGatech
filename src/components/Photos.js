@@ -79,7 +79,7 @@ class Photos extends Component {
         document.title = data.description;
         //console.log(data.url);
         $('meta[property=og\\:image]').attr('content',data.url);
-        $('meta[property=og\\:image:secure_url]').attr('content',data.url);
+        $('meta[property=og\\:image\\:secure_url]').attr('content',data.url);
       }.bind(this));
     }
     
