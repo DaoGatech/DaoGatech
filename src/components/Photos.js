@@ -58,6 +58,7 @@ let hashCode = function(str){
 let map_location = {};
 let map_id = {};
 let map_desc = {};
+let map_images = {};
 
 class Photos extends Component {
   
@@ -72,14 +73,25 @@ class Photos extends Component {
                   currentLocation : "",
                   description : ""
     };
+    $(document).ajaxStop(function () {
+        $('.loader').hide();
+        $('.gallery').show();
+    });
+
+    $(document).ajaxStart(function () {
+        $('.loader').show();
+        $('.gallery').hide();
+    });
+
     if(getParameterByName("id")) {
+      let cache_images = localStorage.getItem("cache_images");
+      cache_images = JSON.parse(cache_images);
+      console.log(cache_images[getParameterByName("id")][1]);
+      $('meta[property=og\\:title]').attr('content',cache_images[getParameterByName("id")][1]);
       $.get('https://daowebapi.herokuapp.com/user/images/' + getParameterByName("id")).done(function(data) {
         this.setState({currentUrl: data.url, currentLocation: data.location, description: data.description});
         this.openModal();
         document.title = data.description;
-        //console.log(data.url);
-        $('meta[property=og\\:image]').attr('content',data.url);
-        $('meta[property=og\\:image\\:secure_url]').attr('content',data.url);
       }.bind(this));
     }
     
@@ -107,6 +119,8 @@ class Photos extends Component {
           map_location[hashCode(data[index].url)] = data[index].location; 
           map_id[hashCode(data[index].url)] = data[index].id;
           map_desc[hashCode(data[index].url)] = data[index].description;
+          let id_str = data[index].id
+          map_images[id_str.toString()] = [data[index].url, data[index].description];
           temp.push(
             { url : data[index].url ,
               clickHandler: (url, obj) => { 
@@ -118,15 +132,11 @@ class Photos extends Component {
           });
         }
       this.setState({images: temp});
+      localStorage.setItem("cache_images", JSON.stringify(map_images));
     }.bind(this));
   }
 
-  render() {
-  var metas = document.getElementsByTagName('meta'); 
-
-   for (var i=0; i<metas.length; i++) { 
-      console.log(metas[i]);
-   } 
+  render() { 
     return (  
       <div className="App">
         <div className="App-header">
@@ -155,6 +165,7 @@ class Photos extends Component {
           </div>
          
         </div>
+        <div className="loader">Loading...</div>
         <div className="gallery">
           <ReactRpg imagesArray={this.state.images} columns={[ 1, 2, 3 ]} padding={20} />
         </div>
