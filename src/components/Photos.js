@@ -60,6 +60,7 @@ let map_location = {};
 let map_id = {};
 let map_desc = {};
 let map_images = {};
+let map_times = {};
 
 class Photos extends Component {
   
@@ -72,7 +73,8 @@ class Photos extends Component {
                   modalIsOpen: false,
                   currentUrl: "",
                   currentLocation : "",
-                  description : ""
+                  description : "",
+                  datePosted : ""
     };
     $(document).ajaxStop(function () {
         $('.loader').hide();
@@ -90,7 +92,7 @@ class Photos extends Component {
       console.log(cache_images[getParameterByName("id")][1]);
       $('meta[property=og\\:title]').attr('content',cache_images[getParameterByName("id")][1]);
       $.get('https://daowebapi.herokuapp.com/user/images/' + getParameterByName("id")).done(function(data) {
-        this.setState({currentUrl: data.url, currentLocation: data.location, description: data.description});
+        this.setState({currentUrl: data.url, currentLocation: data.location, description: data.description, datePosted: data.datePosted});
         this.openModal();
         document.title = data.description;
       }.bind(this));
@@ -120,12 +122,14 @@ class Photos extends Component {
           map_location[hashCode(data[index].url)] = data[index].location; 
           map_id[hashCode(data[index].url)] = data[index].id;
           map_desc[hashCode(data[index].url)] = data[index].description;
+          map_times[hashCode(data[index].url)] = data[index].datePosted;
           let id_str = data[index].id
           map_images[id_str.toString()] = [data[index].url, data[index].description];
           temp.push(
             { url : data[index].url ,
               clickHandler: (url, obj) => { 
-                this.setState({currentUrl: url, currentLocation: map_location[hashCode(url)], description: map_desc[hashCode(url)]});
+                this.setState({currentUrl: url, currentLocation: map_location[hashCode(url)], description: map_desc[hashCode(url)], 
+                  datePosted: map_times[hashCode(url)]});
                 this.openModal(); 
                 window.history.pushState("Photo Page", map_location[hashCode(url)] , "/photos?id=" + map_id[hashCode(url)]);
                 document.title = map_desc[hashCode(url)];
@@ -183,6 +187,16 @@ class Photos extends Component {
                   />
                   &nbsp;
                 {this.state.currentLocation}
+                &nbsp;
+                &nbsp;
+                <FontAwesome
+                    name='clock-o'
+                    size='lg'
+                    className='icons'
+                  />
+                  &nbsp;
+                {this.state.datePosted}
+
                 </div>
              </div>
           </div>
