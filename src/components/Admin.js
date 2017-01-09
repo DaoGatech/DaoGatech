@@ -84,6 +84,7 @@ class Admin extends Component {
       fd.append("file", this.state.file);
       fd.append("location",$('#location').val());
       fd.append("description",$('#description').val());
+      fd.append("dateposted",$('#dateposted').val());
       $.ajax({
         url: 'https://daowebapi.herokuapp.com/upload',
         data: fd,
@@ -124,8 +125,9 @@ class Admin extends Component {
         <LeftTabs tabType="simple" defaultActiveKey={1} tabWidth={7} paneWidth={17}>
             <Tab eventKey={1} title="Home"></Tab>
             <Tab eventKey={2} title="Upload Pictures">
-              <input type="text" className="form-control" id="location" placeholder="Location"/>
-              <input type="text" className="form-control" id="description" placeholder="Description"/>
+              <input type="text" className="form-control upload-input" id="location" placeholder="Location"/>
+              <input type="text" className="form-control upload-input" id="description" placeholder="Description"/>
+              <input type="date" className="form-control upload-input" id="dateposted"/>
               <div className="uploadWrapper">
                 Choose file: <label className="btn btn-default btn-file">
                   Browse <input ref="file" onChange={(e)=>this.imageChange(e)} id="imgURL" type="file" style={{display: 'none'}}/>
