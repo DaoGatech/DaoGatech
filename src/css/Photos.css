@@ -16,14 +16,6 @@ button {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
 }
 
-.App-logo {
-  position: absolute;
-  height: 100%;
-  left: 0;
-  right: 0;
-  display:inline-block;
-}
-
 .App-header {
   background-color: #222;
   height: 2em;
@@ -53,43 +45,9 @@ button {
   position: relative;
 }
 
-.left-section {
-  width: 40%;
-  height: 2em;
-  margin-top:0;
-  padding-bottom:0.25em;
-  float: left;
-  font-family: proxima-nova, sans-serif;
-  font-style: normal;
-  position: relative;
-  font-weight: 900;
-  font-size: 1em;
-}
-
-.app-title {
-  position: absolute;
-  display:inline-block;
-  top: 10%;
-  left: 10%;
-  height:100%;
-}
-
-.right-section {
-  height:100%;
-  width: 25%;
-  position: absolute;
-  top: 0;
-  right: 12%;
-}
 .main-img {
   max-width: 100%;
   max-height: 100%;
-}
-
-.nav {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .App-intro {
@@ -232,18 +190,5 @@ button {
   margin-top:3%;
   font-size: 1.2em;
   padding-left: 3%;
-}
-
-.nav-buttons {
-  padding-right: 7%;
-  font-size: 17px;
-  padding-top: 3%;
-}
-
-.inside-nav {
-  text-decoration: none;
-  color: inherit;
-  font-weight: 600;
-  text-align: center;
 }
 

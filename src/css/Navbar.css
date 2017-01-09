@@ -1,0 +1,56 @@
+.nav {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.left-section {
+  width: 40%;
+  height: 2em;
+  margin-top:0;
+  padding-bottom:0.25em;
+  float: left;
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  position: relative;
+  font-weight: 900;
+  font-size: 1em;
+}
+
+.App-logo {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  right: 0;
+  display:inline-block;
+}
+
+.app-title {
+  position: absolute;
+  display:inline-block;
+  top: 10%;
+  left: 10%;
+  height:100%;
+}
+
+.right-section {
+  height:100%;
+  width: 25%;
+  position: absolute;
+  top: 0;
+  right: 12%;
+}
+
+.nav-buttons {
+  padding-right: 7%;
+  font-size: 17px;
+  padding-top: 3%;
+}
+
+.inside-nav {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  text-align: center;
+}
+

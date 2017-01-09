@@ -4,6 +4,7 @@ import { ReactRpg } from 'react-rpg';
 import FontAwesome from 'react-fontawesome';
 import Logo from '../assets/logo.png';
 import Modal from 'react-modal';
+import Navbar from './Navbar';
 import $ from 'jquery';
 
 const customStyles = {
@@ -139,21 +140,7 @@ class Photos extends Component {
   render() { 
     return (  
       <div className="App">
-        <div className="App-header">
-          <div className="nav">
-            <div className="left-section">
-              <img src={Logo} className="App-logo" alt="logo" /> 
-              <div className="app-title">DAOGATECH</div>
-            </div>
-            <div className="right-section">         
-              <button className="nav-buttons"><a className="inside-nav" href="/">Home</a></button>
-              <button className="nav-buttons"><a className="inside-nav" href="/photos">Photos</a></button>
-              <button className="nav-buttons"><a className="inside-nav" href="/login">Login</a></button>
-            </div>
-            
-          </div>
-        </div>
-       
+        <Navbar/>
         <div className="introduction">
           <div className="left-intro">
              <img className="avatar" src={Logo} alt="avatar"/>
