@@ -31,24 +31,52 @@ class Admin extends Component {
     // redirects to photos page
     this.context.router.push('/login');
   }
+  
+  resizeBase64Img(base64, width, height) {
+    var canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    var context = canvas.getContext("2d");
+    var deferred = $.Deferred();
+    $("<img/>").attr("src", base64).on('load', function() {
+        context.scale(width/this.width,  height/this.height);
+        context.drawImage(this, 0, 0); 
+        deferred.resolve($("<img/>").attr("src", canvas.toDataURL()));               
+    });
+    return deferred.promise();    
+  }
+
+  srcToFile(src, fileName, mimeType){
+    return (fetch(src)
+        .then(function(res){return res.arrayBuffer();})
+        .then(function(buf){return new File([buf], fileName, {type:mimeType});})
+    );  
+  }
 
   imageChange(e) {
     e.preventDefault()
     let reader = new FileReader()
     let file = e.target.files[0]
+    let parent = this;
     reader.onloadend = () => {
-      this.setState({
-        file: file,
-        imagePreviewUrl: reader.result
-      })
+      let img_src;
+      this.resizeBase64Img(reader.result, 800, 600).then(function(newImg){
+        img_src = newImg[0].currentSrc;
+        parent.srcToFile(img_src, 'result.png', 'image/png')
+          .then(function(file){
+            parent.setState({
+              file: file,
+              imagePreviewUrl: reader.result
+            })
+          })
+          .catch(console.error);
+      });
+      
     }
-    if(file.size <= 1048576) {
-      reader.readAsDataURL(file)
-      $('#uploadBtn').css('visibility','visible');
-    } else {
-      alert("File size exceeds maximum size. Please consider decreasing the size");
-    }
+    reader.readAsDataURL(file)
+    $('#uploadBtn').css('visibility','visible');
   }
+
 
   upload() {
     if(this.state.file !== undefined) {
@@ -74,6 +102,7 @@ class Admin extends Component {
   }
 
   render() {
+    
     let {imagePreviewUrl} = this.state;
     let imagePreview = null;
     if (imagePreviewUrl) {
@@ -85,14 +114,16 @@ class Admin extends Component {
     return (  
       
       <div className="App">
-      <div className="App-header">
+        <div className="App-header">
           <div className="nav">
             ADMIN
             <button onClick={this.logout.bind(this)}><a style={{"textDecoration": "none", "color": "inherit"}} href="">Logout</a></button>
           </div>
         </div>
-       <LeftTabs defaultActiveKey={1} tabWidth={7} paneWidth={9}>
-            <Tab eventKey={1} title="Upload Pictures">
+       <div className="container">
+        <LeftTabs tabType="simple" defaultActiveKey={1} tabWidth={7} paneWidth={17}>
+            <Tab eventKey={1} title="Home"></Tab>
+            <Tab eventKey={2} title="Upload Pictures">
               <input type="text" className="form-control" id="location" placeholder="Location"/>
               <input type="text" className="form-control" id="description" placeholder="Description"/>
               <div className="uploadWrapper">
@@ -107,7 +138,8 @@ class Admin extends Component {
               </div>
               <button onClick={(e)=>this.upload()} id="uploadBtn" className="btn btn-primary">Upload</button>
             </Tab>
-        </LeftTabs>
+          </LeftTabs>
+        </div>
       </div>
 
     );
