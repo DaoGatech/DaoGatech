@@ -189,16 +189,14 @@ class Photos extends Component {
           <div className="imgDesc">
           <FontAwesome
             name='quote-left'
-            size='lg'
-            className='icons'
+            className='quote-icons'
           />
           &nbsp;
          {this.state.description} 
           &nbsp;
           <FontAwesome
             name='quote-right'
-            size='lg'
-            className='icons'
+            className='quote-icons'
           />
           </div>
           

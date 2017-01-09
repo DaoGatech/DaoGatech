@@ -192,3 +192,8 @@ button {
   padding-left: 3%;
 }
 
+.quote-icons {
+  font-size: 50%;
+  position: relative;
+  vertical-align:top;
+}
