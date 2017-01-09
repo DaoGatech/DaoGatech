@@ -53,4 +53,7 @@
   font-weight: 600;
   text-align: center;
 }
+.inside-nav:hover {
+  text-decoration: none;
+}
 
