@@ -1,6 +1,5 @@
 import React, { Component, PropTypes as T } from 'react';
 import '../css/Login.css';
-import '../css/Photos.css';
 import $ from 'jquery';
 import AuthService from '../utils/AuthService'
 import Logo from '../assets/logo.png';
