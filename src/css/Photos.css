@@ -136,9 +136,14 @@ button {
 }
 
 .commentSec {
-  width: 100%;
-  display: inline-block;
-  zoom: auto;
+  position: relative;
+  width: 70%;
+  margin-top:5%;
+  margin-left: 3%;
+}
+
+.fb-comments, .fb-comments span, .fb-comments iframe {
+  width: 100% !important;
 }
 
 .closeModal {

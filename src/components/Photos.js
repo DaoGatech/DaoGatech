@@ -6,6 +6,7 @@ import Logo from '../assets/logo.png';
 import Modal from 'react-modal';
 import Navbar from './Navbar';
 import $ from 'jquery';
+import FacebookProvider, { Comments } from 'react-facebook';
 
 const customStyles = {
 overlay : {
@@ -26,6 +27,7 @@ overlay : {
     maxWidth              : '85%',
     minWidth              : '75%',
     height                : 'auto',
+    minHeight             : "50%",
     maxHeight             : '85%',
     overflow              : 'auto',
     padding               : '0',
@@ -201,19 +203,23 @@ class Photos extends Component {
              </div>
           </div>
           <div className="imgDesc">
-          <FontAwesome
-            name='quote-left'
-            className='quote-icons'
-          />
-          &nbsp;
-         {this.state.description} 
-          &nbsp;
-          <FontAwesome
-            name='quote-right'
-            className='quote-icons'
-          />
-          </div>
-          
+              <FontAwesome
+                name='quote-left'
+                className='quote-icons'
+              />
+              &nbsp;
+              {this.state.description} 
+              &nbsp;
+              <FontAwesome
+                name='quote-right'
+                className='quote-icons'
+              />
+         </div>
+         <div className="commentSec">
+            <FacebookProvider appID="147912702359141">
+              <Comments href={window.location.href}/>
+            </FacebookProvider>
+         </div>
         </div>
         </Modal>
       
