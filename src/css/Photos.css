@@ -30,6 +30,10 @@ button {
   margin-right: auto;
 }
 
+.imageWrapper:hover {
+    -webkit-filter: brightness(60%);
+}
+
 .introduction {
   width: 78%;
   height: 18.75em;
