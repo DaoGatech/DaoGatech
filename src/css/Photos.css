@@ -130,11 +130,6 @@ button {
   display:inline-block;
 }
 
-.imgDesc {
-  width: 100%;
-  display: inline-block;
-}
-
 .commentSec {
   position: relative;
   width: 70%;
@@ -193,8 +188,10 @@ button {
 .imgDesc {
   font-weight: 600;
   margin-top:3%;
-  font-size: 1.2em;
+  font-size: 1em;
   padding-left: 3%;
+  width: 100%;
+  display: inline-block;
 }
 
 .quote-icons {
