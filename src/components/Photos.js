@@ -25,6 +25,7 @@ overlay : {
     marginRight           : '-50%',
     width                 : 'auto',
     maxWidth              : '75%',
+    overflowX             : 'hidden',
     minWidth              : '65%',
     height                : 'auto',
     minHeight             : "50%",
