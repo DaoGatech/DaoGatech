@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Photos.css';
-import { ReactRpgCustomized } from 'react-rpg';
+import { ReactRpgCustomized } from 'react-rpg-customized';
 import FontAwesome from 'react-fontawesome';
 import Logo from '../assets/logo.png';
 import Modal from 'react-modal';
