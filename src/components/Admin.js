@@ -60,7 +60,7 @@ class Admin extends Component {
     let parent = this;
     reader.onloadend = () => {
       let img_src;
-      this.resizeBase64Img(reader.result, 800, 600).then(function(newImg){
+      this.resizeBase64Img(reader.result, 700, 700).then(function(newImg){
         img_src = newImg[0].currentSrc;
         parent.srcToFile(img_src, 'result.png', 'image/png')
           .then(function(file){
