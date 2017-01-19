@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Photos.css';
-import { ReactRpg } from 'react-rpg';
+import { ReactRpgCustomized } from 'react-rpg';
 import FontAwesome from 'react-fontawesome';
 import Logo from '../assets/logo.png';
 import Modal from 'react-modal';
@@ -89,6 +89,15 @@ class Photos extends Component {
         $('.gallery').hide();
     });
 
+   $(".gallery .imageGridItem").on({
+    mouseenter: function () {
+       console.log("here");
+    },
+    mouseleave:function () {
+      console.log("test");
+    }
+    });
+
     if(getParameterByName("id")) {
       let cache_images = localStorage.getItem("cache_images");
       cache_images = JSON.parse(cache_images);
@@ -161,9 +170,9 @@ class Photos extends Component {
         </div>
         <div className="loader">Loading...</div>
         <div className="gallery">
-          <ReactRpg imagesArray={this.state.images} columns={[ 1, 2, 3 ]} padding={20} />
+          <ReactRpgCustomized imagesArray={this.state.images} columns={[ 1, 2, 3 ]} padding={20} />
         </div>
-        
+        {console.log($('.imageWrapper'))}
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
