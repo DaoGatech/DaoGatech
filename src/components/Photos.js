@@ -29,6 +29,7 @@ overlay : {
     minWidth              : '65%',
     height                : 'auto',
     minHeight             : "50%",
+    zIndex                : "9999",
     maxHeight             : '85%',
     overflow              : 'auto',
     padding               : '0',
@@ -89,19 +90,9 @@ class Photos extends Component {
         $('.gallery').hide();
     });
 
-   $(".gallery .imageGridItem").on({
-    mouseenter: function () {
-       console.log("here");
-    },
-    mouseleave:function () {
-      console.log("test");
-    }
-    });
-
     if(getParameterByName("id")) {
       let cache_images = localStorage.getItem("cache_images");
       cache_images = JSON.parse(cache_images);
-      console.log(cache_images[getParameterByName("id")][1]);
       $('meta[property=og\\:title]').attr('content',cache_images[getParameterByName("id")][1]);
       $.get('https://daowebapi.herokuapp.com/user/images/' + getParameterByName("id")).done(function(data) {
         this.setState({currentUrl: data.url, currentLocation: data.location, description: data.description, datePosted: data.datePosted});
@@ -113,6 +104,7 @@ class Photos extends Component {
 	}
   openModal() {
     this.setState({modalIsOpen: true});
+    $('.image-title-holder').css('zIndex','-1');
   }
 
   afterOpenModal() {
@@ -121,6 +113,7 @@ class Photos extends Component {
 
   closeModal(event) {
     event.preventDefault();
+    $('.image-title-holder').css('zIndex','1');
     this.setState({modalIsOpen: false});
     window.history.pushState("Photo Page", "DaoGatech", "/photos");
     document.title = "DaoGatech";
@@ -139,7 +132,10 @@ class Photos extends Component {
           map_images[id_str.toString()] = [data[index].url, data[index].description];
           temp.push(
             { url : data[index].url ,
+              title: data[index].description,
+              desc: data[index].location + "  |  " + data[index].datePosted,
               clickHandler: (url, obj) => { 
+                $('.image-title-holder').mouseout();;
                 this.setState({currentUrl: url, currentLocation: map_location[hashCode(url)], description: map_desc[hashCode(url)], 
                   datePosted: map_times[hashCode(url)]});
                 this.openModal(); 
@@ -172,7 +168,6 @@ class Photos extends Component {
         <div className="gallery">
           <ReactRpgCustomized imagesArray={this.state.images} columns={[ 1, 2, 3 ]} padding={20} />
         </div>
-        {console.log($('.imageWrapper'))}
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
